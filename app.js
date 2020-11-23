@@ -1,12 +1,14 @@
 const express = require('express')
-const morgan = require('mordan')
+//const morgan = require('morgan')
 
 const app = express()
 
-app.use(morgan('common'))
+//app.use(morgan('common'))
 
-app.get('/foo',(req,res) => {
-    resizeBy.send('foo yourself')
+app.get('/',(req,res) => {
+    res.send('Hello Express!')
 })
-
+/* 
 app.listen(8080, () => console.log('Server on 8080'))
+
+*/
