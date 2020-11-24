@@ -5,42 +5,31 @@ const app = express()
 
 app.use(morgan('common'))
 
-app.get('/boogers',(req,res) => {
-    res.send('Hello Express Boogers!')
-})
-
-app.get('/pancakes',(req,res)=>{
-    res.send('Hello Express Pancakes!')
-})
-
-app.get('/queryViewer', (req, res) => {
-    console.log(req.query);
-    res.end(); //do not send any data back to the client
-  });
-
   ////////////////////////////////////////////////////
 
-  app.get('/greetings', (req, res) => {
+  app.get('/sum', (req, res) => {
     //1. get values from the request
-    const name = req.query.name;
-    const race = req.query.race;
+    const d = req.query.a;
+    const e = req.query.b;
   
     //2. validate the values
-    if(!name) {
-      //3. name was not provided
-      return res.status(400).send('Please provide a name');
+    if(!Number(d)) {
+      return res.status(400).send('Please provide a two numbers');
     }
   
-    if(!race) {
-      //3. race was not provided
-      return res.status(400).send('Please provide a race');
+    if(!Number(e)) {
+      return res.status(400).send('Please provide a two numbers');
     }
+
+    a = Number(d)
+    b = Number(e)
+    c = a+b
   
     //4. and 5. both name and race are valid so do the processing.
-    const greeting = `Greetings ${name} the ${race}, welcome to our kingdom.`;
+    const retu = `The sum of ${a} and ${b} is ${c}`;
   
     //6. send the response 
-    res.send(greeting);
+    res.send(retu);
   });
 
   ///////////////////////////////////////////////
